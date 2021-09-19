@@ -6,7 +6,7 @@ If you have a favorite stack you would like to add, feel free to open a PR on th
 
 I have specifically left off Angular. 🙃
 
-Not all stacks may be possible, but worth a shot!
+Not all stacks may be possible, but you can definitely try!
 
 # svelte app
 

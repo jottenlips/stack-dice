@@ -90,20 +90,26 @@
     <span style="font-weight: 500;">{audiences[randomAudience]}</span>
     with {"\n"}
     <a
+      target="_blank"
       href={`https://github.com/search?ref=simplesearch&q=${backend[randomBackend]}`}
       >{hasBackend ? `${backend[randomBackend]}\n` : ""}</a
     >
-    <a href={`https://github.com/search?ref=simplesearch&q=${api[randomAPI]}`}
+    <a
+      target="_blank"
+      href={`https://github.com/search?ref=simplesearch&q=${api[randomAPI]}`}
       >{(hasFrontend || hasMobile) && hasBackend
         ? `${api[randomAPI]}\n`
         : ""}</a
     ><a
+      target="_blank"
       href={`https://github.com/search?ref=simplesearch&q=${frontend[randomFrontend]}`}
       >{hasFrontend ? `${frontend[randomFrontend]}\n` : ""}</a
     ><a
+      target="_blank"
       href={`https://github.com/search?ref=simplesearch&q=${mobile[randomMobile]}`}
       >{hasMobile ? `${mobile[randomMobile]}\n` : ""}</a
     ><a
+      target="_blank"
       href={`https://github.com/search?ref=simplesearch&q=${database[randomDatabase]}`}
       >{hasDatabase ? `${database[randomDatabase]}\n` : ""}</a
     >

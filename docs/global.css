@@ -1,4 +1,8 @@
-html,
+html {
+    background: rgb(131, 58, 180);
+    background: linear-gradient( 97deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 77%, rgba(252, 176, 69, 1) 100%);
+}
+
 body {
     position: relative;
     width: 100%;
@@ -40,8 +44,9 @@ textarea {
     padding: 0.4em;
     margin: 0 0 0.5em 0;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 2px;
+    color: clear;
 }
 
 input:disabled {

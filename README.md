@@ -1,8 +1,12 @@
-_Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing._
+# Stack Dice 🎲
 
-_Looking for a shareable component template instead? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
+Cannot decide what to build for your next project? Want to make something cool for hacktoberfest that is all your own? Stack Dice can help! 🎲 Roll the dice and get building.
 
----
+If you have a favorite stack you would like to add, feel free to open a PR on this repo.
+
+I have specifically left off Angular. 🙃
+
+Not all stacks may be possible, but worth a shot!
 
 # svelte app
 

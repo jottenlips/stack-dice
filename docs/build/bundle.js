@@ -45,6 +45,10 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -276,6 +280,19 @@ var app = (function () {
         dispatch_dev('SvelteDOMRemove', { node });
         detach(node);
     }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
     function attr_dev(node, attribute, value) {
         attr(node, attribute, value);
         if (value == null)
@@ -325,34 +342,84 @@ var app = (function () {
     	let main;
     	let h1;
     	let t0;
+    	let t1_value = /*ideas*/ ctx[2][/*randomIdea*/ ctx[6]] + "";
     	let t1;
     	let t2;
+    	let t3_value = /*topics*/ ctx[3][/*randomTopic*/ ctx[7]] + "";
     	let t3;
-    	let p;
     	let t4;
-    	let a;
+
+    	let t5_value = (/*hasBackend*/ ctx[8]
+    	? `${/*backend*/ ctx[0][/*randomBackend*/ ctx[4]]}, `
+    	: "") + "";
+
+    	let t5;
+
+    	let t6_value = (/*hasAPI*/ ctx[9] || /*hasMobile*/ ctx[11]
+    	? `${/*api*/ ctx[1][/*randomAPI*/ ctx[5]]}, `
+    	: "") + "";
+
     	let t6;
+    	let t7;
+    	let button0;
+    	let t9;
+    	let button1;
+    	let t10;
+    	let t11;
+    	let t12;
+    	let button2;
+    	let t13;
+    	let t14;
+    	let t15;
+    	let button3;
+    	let t16;
+    	let t17;
+    	let t18;
+    	let button4;
+    	let t19;
+    	let t20;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
     			main = element("main");
     			h1 = element("h1");
-    			t0 = text("Hello ");
-    			t1 = text(/*name*/ ctx[0]);
-    			t2 = text("!");
-    			t3 = space();
-    			p = element("p");
-    			t4 = text("Visit the ");
-    			a = element("a");
-    			a.textContent = "Svelte tutorial";
-    			t6 = text(" to learn how to build Svelte apps.");
-    			attr_dev(h1, "class", "svelte-1tky8bj");
-    			add_location(h1, file, 5, 1, 46);
-    			attr_dev(a, "href", "https://svelte.dev/tutorial");
-    			add_location(a, file, 6, 14, 83);
-    			add_location(p, file, 6, 1, 70);
-    			attr_dev(main, "class", "svelte-1tky8bj");
-    			add_location(main, file, 4, 0, 38);
+    			t0 = text("Build a ");
+    			t1 = text(t1_value);
+    			t2 = text(" for ");
+    			t3 = text(t3_value);
+    			t4 = text(" with ");
+    			t5 = text(t5_value);
+    			t6 = text(t6_value);
+    			t7 = space();
+    			button0 = element("button");
+    			button0.textContent = "Roll Dice For App";
+    			t9 = space();
+    			button1 = element("button");
+    			t10 = text("Backend: ");
+    			t11 = text(/*hasBackend*/ ctx[8]);
+    			t12 = space();
+    			button2 = element("button");
+    			t13 = text("API: ");
+    			t14 = text(/*hasAPI*/ ctx[9]);
+    			t15 = space();
+    			button3 = element("button");
+    			t16 = text("Frontend: ");
+    			t17 = text(/*hasFrontend*/ ctx[10]);
+    			t18 = space();
+    			button4 = element("button");
+    			t19 = text("Mobile: ");
+    			t20 = text(/*hasMobile*/ ctx[11]);
+    			attr_dev(h1, "class", "svelte-1e9puaw");
+    			add_location(h1, file, 49, 2, 1055);
+    			add_location(button0, file, 54, 2, 1245);
+    			add_location(button1, file, 55, 2, 1306);
+    			add_location(button2, file, 59, 2, 1384);
+    			add_location(button3, file, 62, 2, 1449);
+    			add_location(button4, file, 65, 2, 1529);
+    			attr_dev(main, "class", "svelte-1e9puaw");
+    			add_location(main, file, 48, 0, 1046);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -363,19 +430,64 @@ var app = (function () {
     			append_dev(h1, t0);
     			append_dev(h1, t1);
     			append_dev(h1, t2);
-    			append_dev(main, t3);
-    			append_dev(main, p);
-    			append_dev(p, t4);
-    			append_dev(p, a);
-    			append_dev(p, t6);
+    			append_dev(h1, t3);
+    			append_dev(h1, t4);
+    			append_dev(h1, t5);
+    			append_dev(h1, t6);
+    			append_dev(main, t7);
+    			append_dev(main, button0);
+    			append_dev(main, t9);
+    			append_dev(main, button1);
+    			append_dev(button1, t10);
+    			append_dev(button1, t11);
+    			append_dev(main, t12);
+    			append_dev(main, button2);
+    			append_dev(button2, t13);
+    			append_dev(button2, t14);
+    			append_dev(main, t15);
+    			append_dev(main, button3);
+    			append_dev(button3, t16);
+    			append_dev(button3, t17);
+    			append_dev(main, t18);
+    			append_dev(main, button4);
+    			append_dev(button4, t19);
+    			append_dev(button4, t20);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(button0, "click", /*getRandomApp*/ ctx[12], false, false, false),
+    					listen_dev(button1, "click", /*toggleHasBackend*/ ctx[13], false, false, false),
+    					listen_dev(button2, "click", /*toggleHasAPI*/ ctx[14], false, false, false),
+    					listen_dev(button3, "click", /*toggleHasFrontend*/ ctx[15], false, false, false),
+    					listen_dev(button4, "click", /*toggleHasMobile*/ ctx[16], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
+    			if (dirty & /*ideas, randomIdea*/ 68 && t1_value !== (t1_value = /*ideas*/ ctx[2][/*randomIdea*/ ctx[6]] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*topics, randomTopic*/ 136 && t3_value !== (t3_value = /*topics*/ ctx[3][/*randomTopic*/ ctx[7]] + "")) set_data_dev(t3, t3_value);
+
+    			if (dirty & /*hasBackend, backend, randomBackend*/ 273 && t5_value !== (t5_value = (/*hasBackend*/ ctx[8]
+    			? `${/*backend*/ ctx[0][/*randomBackend*/ ctx[4]]}, `
+    			: "") + "")) set_data_dev(t5, t5_value);
+
+    			if (dirty & /*hasAPI, hasMobile, api, randomAPI*/ 2594 && t6_value !== (t6_value = (/*hasAPI*/ ctx[9] || /*hasMobile*/ ctx[11]
+    			? `${/*api*/ ctx[1][/*randomAPI*/ ctx[5]]}, `
+    			: "") + "")) set_data_dev(t6, t6_value);
+
+    			if (dirty & /*hasBackend*/ 256) set_data_dev(t11, /*hasBackend*/ ctx[8]);
+    			if (dirty & /*hasAPI*/ 512) set_data_dev(t14, /*hasAPI*/ ctx[9]);
+    			if (dirty & /*hasFrontend*/ 1024) set_data_dev(t17, /*hasFrontend*/ ctx[10]);
+    			if (dirty & /*hasMobile*/ 2048) set_data_dev(t20, /*hasMobile*/ ctx[11]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -393,34 +505,151 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	let { name } = $$props;
-    	const writable_props = ['name'];
+    	let { backend } = $$props;
+    	let { api } = $$props;
+    	let { frontend } = $$props;
+    	let { mobile } = $$props;
+    	let { ideas } = $$props;
+    	let { topics } = $$props;
+    	let randomBackend = 0;
+    	let randomAPI = 0;
+    	let randomFrontend = 0;
+    	let randomMobile = 0;
+    	let randomIdea = 0;
+    	let randomTopic = 0;
+
+    	const getRandom = max => {
+    		return Math.floor(Math.randomBackend() * max);
+    	};
+
+    	const getRandomApp = () => {
+    		$$invalidate(4, randomBackend = getRandom(backend.length));
+    		$$invalidate(5, randomAPI = getRandom(api.length));
+    		randomFrontend = getRandom(frontend.length);
+    		randomMobile = getRandom(mobile.length);
+    		$$invalidate(6, randomIdea = getRandom(ideas.length));
+    		$$invalidate(7, randomTopic = getRandom(topics.length));
+    	};
+
+    	let hasBackend = true;
+    	let hasAPI = true;
+    	let hasFrontend = true;
+    	let hasMobile = false;
+
+    	const toggleHasBackend = () => {
+    		$$invalidate(8, hasBackend = !hasBackend);
+    	};
+
+    	const toggleHasAPI = () => {
+    		$$invalidate(9, hasAPI = !hasAPI);
+    	};
+
+    	const toggleHasFrontend = () => {
+    		$$invalidate(10, hasFrontend = !hasFrontend);
+    	};
+
+    	const toggleHasMobile = () => {
+    		$$invalidate(11, hasMobile = !hasMobile);
+    	};
+
+    	const writable_props = ['backend', 'api', 'frontend', 'mobile', 'ideas', 'topics'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
+    		if ('backend' in $$props) $$invalidate(0, backend = $$props.backend);
+    		if ('api' in $$props) $$invalidate(1, api = $$props.api);
+    		if ('frontend' in $$props) $$invalidate(17, frontend = $$props.frontend);
+    		if ('mobile' in $$props) $$invalidate(18, mobile = $$props.mobile);
+    		if ('ideas' in $$props) $$invalidate(2, ideas = $$props.ideas);
+    		if ('topics' in $$props) $$invalidate(3, topics = $$props.topics);
     	};
 
-    	$$self.$capture_state = () => ({ name });
+    	$$self.$capture_state = () => ({
+    		backend,
+    		api,
+    		frontend,
+    		mobile,
+    		ideas,
+    		topics,
+    		randomBackend,
+    		randomAPI,
+    		randomFrontend,
+    		randomMobile,
+    		randomIdea,
+    		randomTopic,
+    		getRandom,
+    		getRandomApp,
+    		hasBackend,
+    		hasAPI,
+    		hasFrontend,
+    		hasMobile,
+    		toggleHasBackend,
+    		toggleHasAPI,
+    		toggleHasFrontend,
+    		toggleHasMobile
+    	});
 
     	$$self.$inject_state = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
+    		if ('backend' in $$props) $$invalidate(0, backend = $$props.backend);
+    		if ('api' in $$props) $$invalidate(1, api = $$props.api);
+    		if ('frontend' in $$props) $$invalidate(17, frontend = $$props.frontend);
+    		if ('mobile' in $$props) $$invalidate(18, mobile = $$props.mobile);
+    		if ('ideas' in $$props) $$invalidate(2, ideas = $$props.ideas);
+    		if ('topics' in $$props) $$invalidate(3, topics = $$props.topics);
+    		if ('randomBackend' in $$props) $$invalidate(4, randomBackend = $$props.randomBackend);
+    		if ('randomAPI' in $$props) $$invalidate(5, randomAPI = $$props.randomAPI);
+    		if ('randomFrontend' in $$props) randomFrontend = $$props.randomFrontend;
+    		if ('randomMobile' in $$props) randomMobile = $$props.randomMobile;
+    		if ('randomIdea' in $$props) $$invalidate(6, randomIdea = $$props.randomIdea);
+    		if ('randomTopic' in $$props) $$invalidate(7, randomTopic = $$props.randomTopic);
+    		if ('hasBackend' in $$props) $$invalidate(8, hasBackend = $$props.hasBackend);
+    		if ('hasAPI' in $$props) $$invalidate(9, hasAPI = $$props.hasAPI);
+    		if ('hasFrontend' in $$props) $$invalidate(10, hasFrontend = $$props.hasFrontend);
+    		if ('hasMobile' in $$props) $$invalidate(11, hasMobile = $$props.hasMobile);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name];
+    	return [
+    		backend,
+    		api,
+    		ideas,
+    		topics,
+    		randomBackend,
+    		randomAPI,
+    		randomIdea,
+    		randomTopic,
+    		hasBackend,
+    		hasAPI,
+    		hasFrontend,
+    		hasMobile,
+    		getRandomApp,
+    		toggleHasBackend,
+    		toggleHasAPI,
+    		toggleHasFrontend,
+    		toggleHasMobile,
+    		frontend,
+    		mobile
+    	];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, { name: 0 });
+
+    		init(this, options, instance, create_fragment, safe_not_equal, {
+    			backend: 0,
+    			api: 1,
+    			frontend: 17,
+    			mobile: 18,
+    			ideas: 2,
+    			topics: 3
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -432,25 +661,90 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*name*/ ctx[0] === undefined && !('name' in props)) {
-    			console.warn("<App> was created without expected prop 'name'");
+    		if (/*backend*/ ctx[0] === undefined && !('backend' in props)) {
+    			console.warn("<App> was created without expected prop 'backend'");
+    		}
+
+    		if (/*api*/ ctx[1] === undefined && !('api' in props)) {
+    			console.warn("<App> was created without expected prop 'api'");
+    		}
+
+    		if (/*frontend*/ ctx[17] === undefined && !('frontend' in props)) {
+    			console.warn("<App> was created without expected prop 'frontend'");
+    		}
+
+    		if (/*mobile*/ ctx[18] === undefined && !('mobile' in props)) {
+    			console.warn("<App> was created without expected prop 'mobile'");
+    		}
+
+    		if (/*ideas*/ ctx[2] === undefined && !('ideas' in props)) {
+    			console.warn("<App> was created without expected prop 'ideas'");
+    		}
+
+    		if (/*topics*/ ctx[3] === undefined && !('topics' in props)) {
+    			console.warn("<App> was created without expected prop 'topics'");
     		}
     	}
 
-    	get name() {
+    	get backend() {
     		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set name(value) {
+    	set backend(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get api() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set api(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get frontend() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set frontend(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get mobile() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set mobile(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ideas() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ideas(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get topics() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set topics(value) {
     		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
     const app = new App({
-    	target: document.body,
-    	props: {
-    		name: 'world'
-    	}
+        target: document.body,
+        props: {
+            backend: ['Ruby on Rails', 'Django', 'Serverless Cloud', 'Meteor', 'Flask', 'Sinatra', 'FastAPI'],
+            api: ['GraphQL', 'REST'],
+            frontend: ['React', 'Svelte', 'Vue', 'Vanilla'],
+            mobile: ['React Native', 'Flutter', 'Kotlin Multiplatform', 'Swift/Xcode', 'Java/Android Studio', 'PWA'],
+            ideas: ['Chat App', 'Game', ''],
+            topics: ['Cats', 'Coffee', 'Cooking']
+        }
     });
 
     return app;

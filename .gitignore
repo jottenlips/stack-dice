@@ -1,5 +1,5 @@
 /node_modules/
 # deploying to gh pages
-# /public/build/
+# /docs/build/
 
 .DS_Store

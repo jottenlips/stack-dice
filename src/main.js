@@ -8,7 +8,7 @@ const app = new App({
         api: ['GraphQL', 'REST'],
         frontend: ['React', 'Svelte', 'Vue', 'Vanilla.js'],
         mobile: ['React Native', 'Flutter', 'Kotlin Multiplatform', 'Swift/Xcode', 'Java/Android Studio', 'PWA'],
-        ideas: ['Chat App', 'Game', 'Schedule App', 'Marketplace', "Blogsphere", "Map Application", 'Reccomendation Engine', 'Job Board', 'Edu-tainment Platform'],
+        ideas: ['Chat App', 'Game', 'Schedule App', 'Marketplace', "Blogsphere", "Map Application", 'Reccomendation Engine', 'Bulletin Board', 'Edu-tainment Platform'],
         audiences: ['Cat Owners', 'Coffee Addicts', 'Cooks', 'Book Lovers', 'Board Game Enthusiast', 'Movie Nerds', 'Gym Rats', 'Skaters', "Car Lovers", "Gamers", "Gardeners", "Metal Workers", "Animal Rights Activists", "Remote Learning"]
     }
 });

@@ -102,11 +102,11 @@
       >{hasFrontend ? `${frontend[randomFrontend]}\n` : ""}</a
     ><a
       href={`https://github.com/search?ref=simplesearch&q=${mobile[randomMobile]}`}
-      >{hasMobile ? `${mobile[randomMobile]}\n` : ""}<a
-        href={`https://github.com/search?ref=simplesearch&q=${database[randomDatabase]}`}
-        >{hasDatabase ? `${database[randomDatabase]}\n` : ""}</a
-      >
-    </a>
+      >{hasMobile ? `${mobile[randomMobile]}\n` : ""}</a
+    ><a
+      href={`https://github.com/search?ref=simplesearch&q=${database[randomDatabase]}`}
+      >{hasDatabase ? `${database[randomDatabase]}\n` : ""}</a
+    >
   </h1>
   <p>
     <button

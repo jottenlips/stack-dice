@@ -161,6 +161,12 @@
   <button on:click={toggleLockDatabase}>
     Keep Database: {lockDatabase}
   </button>
+
+  <h2>
+    Not seeing your favorite stack? Make a contribution on <a
+      href={"https://github.com/jottenlips/stack-dice"}>Github</a
+    >
+  </h2>
 </main>
 
 <style>
@@ -175,6 +181,13 @@
   h1 {
     color: #000000;
     font-size: 3em;
+    font-weight: 200;
+    white-space: pre-line;
+  }
+
+  h2 {
+    color: #000000;
+    font-size: 2em;
     font-weight: 200;
     white-space: pre-line;
   }

@@ -9,6 +9,7 @@
 
   let hasDatabase = false;
   let hasBackend = true;
+  let hasAPI = false
   let hasFrontend = true;
   let hasMobile = false;
 
@@ -19,6 +20,10 @@
   const toggleHasBackend = () => {
     hasBackend = !hasBackend;
   };
+
+  const toggleHasAPI = () => {
+    hasAPI = !hasAPI
+  }
 
   const toggleHasFrontend = () => {
     hasFrontend = !hasFrontend;
@@ -32,6 +37,7 @@
   let lockIdea = false;
   let lockDatabase = false;
   let lockBackend = false;
+  let lockAPI = false
   let lockFrontend = false;
   let lockMobile = false;
 
@@ -50,6 +56,10 @@
   const toggleLockBackend = () => {
     lockBackend = !lockBackend;
   };
+
+  const toggleLockAPI = () => {
+    lockAPI = !lockAPI
+  }
 
   const toggleLockFrontend = () => {
     lockFrontend = !lockFrontend;
@@ -74,7 +84,7 @@
   const getRandomApp = () => {
     if (!lockDatabase) randomDatabase = getRandom(database.length);
     if (!lockBackend) randomBackend = getRandom(backend.length);
-    if (!lockBackend) randomAPI = getRandom(api.length);
+    if (!lockAPI) randomAPI = getRandom(api.length);
     if (!lockFrontend) randomFrontend = getRandom(frontend.length);
     if (!lockMobile) randomMobile = getRandom(mobile.length);
     if (!lockIdea) randomIdea = getRandom(ideas.length);
@@ -97,7 +107,7 @@
     <a
       target="_blank"
       href={`https://github.com/search?ref=simplesearch&q=${api[randomAPI]}`}
-      >{(hasFrontend || hasMobile) && hasBackend
+      >{(hasFrontend || hasMobile) && hasBackend && hasAPI
         ? `${api[randomAPI]}\n`
         : ""}</a
     ><a
@@ -127,6 +137,10 @@
     Backend: {hasBackend}
   </button>
 
+   <button on:click={toggleHasAPI}>
+    API Type: {hasAPI}
+  </button>
+
   <button on:click={toggleHasFrontend}>
     Frontend Framework: {hasFrontend}
   </button>
@@ -151,6 +165,9 @@
   </button>
   <button on:click={toggleLockBackend}>
     Keep Backend: {lockBackend}
+  </button>
+  <button on:click={toggleLockAPI}>
+    Keep API Type: {lockAPI}
   </button>
   <button on:click={toggleLockFrontend}>
     Keep Frontend: {lockFrontend}

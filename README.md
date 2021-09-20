@@ -8,25 +8,12 @@ I have specifically left off Angular. 🙃
 
 Not all stacks may be possible, but you can definitely try!
 
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-_Note that you will need to have [Node.js](https://nodejs.org) installed._
-
 ## Get started
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
+cd stack-dice
 npm install
 ```
 
@@ -49,8 +36,6 @@ To create an optimised version of the app:
 ```bash
 npm run build
 ```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
 # Deploy
 

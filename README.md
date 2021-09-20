@@ -1,6 +1,6 @@
 # Stack Dice 🎲
 
-Cannot decide what to build for your next project? Want to make something cool for hacktoberfest that is all your own? Stack Dice can help! 🎲 Roll the dice and get building.
+Cannot decide what to build for your next project? Want to make something cool for Hacktoberfest that is all your own? Stack Dice can help! 🎲 Roll the dice and get building.
 
 If you have a favorite stack you would like to add, feel free to open a PR on this repo.
 

@@ -1,4 +1,6 @@
 <script>
+  	import Dice from './Dice.svelte';
+
   export let database;
   export let backend;
   export let api;
@@ -97,6 +99,8 @@
 
 <main>
   <h1>Welcome to Stack Dice</h1>
+  <!-- todo some dice animation -->
+  <!-- <Dice/>  -->
   <h2>the app idea and tech-stack generator</h2>
     <button
       style="background-color:#000000;color:#ffffff;border-radius:2px;border-width:1px;border-color:#ffffff;border-radius:6px"

@@ -82,7 +82,7 @@
   };
 
   const getRandomApp = () => {
-    if (!lockDatabase) randomDatabase = getRandom(database.length);
+    if (!lockDatabase) randomDatabase =  getRandom(database.length);
     if (!lockBackend) randomBackend = getRandom(backend.length);
     if (!lockAPI) randomAPI = getRandom(api.length);
     if (!lockFrontend) randomFrontend = getRandom(frontend.length);
@@ -92,11 +92,18 @@
   };
 
   getRandomApp();
+
 </script>
 
 <main>
+  <h1>Welcome to Stack Dice</h1>
+  <h2>the app idea and tech-stack generator</h2>
+    <button
+      style="background-color:#000000;color:#ffffff;border-radius:2px;border-width:1px;border-color:#ffffff;border-radius:6px"
+      on:click={getRandomApp}>Roll 🎲 For New App</button
+    >
   <h1>
-    Build a <span style="font-weight: 500;">{ideas[randomIdea]}</span> for
+    <span style="font-weight: 500;">{ideas[randomIdea]}</span> for
     <span style="font-weight: 500;">{audiences[randomAudience]}</span>
     with {"\n"}
     <a
@@ -125,10 +132,6 @@
     >
   </h1>
   <p>
-    <button
-      style="background-color:#7496db;border-radius:2px"
-      on:click={getRandomApp}>Roll 🎲 For App</button
-    >
     {"\n"}
     Settings:
     {"\n"}
@@ -184,6 +187,9 @@
       href={"https://github.com/jottenlips/stack-dice"}>Github</a
     >
   </h2>
+  <p>
+    *not all stacks generated are possible or make sense, but you can always try 💪
+  </p>
 </main>
 
 <style>
@@ -200,6 +206,7 @@
     font-size: 3em;
     font-weight: 200;
     white-space: pre-line;
+    word-break: break-word;
   }
 
   h2 {
@@ -214,7 +221,7 @@
   }
 
   a {
-    color: #7496db;
+    color: #ffffff;
   }
 
   @media (min-width: 640px) {

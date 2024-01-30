@@ -4,7 +4,7 @@ const app = new App({
     target: document.body,
     props: {
         database: ['PostgreSQL', "MongoDB", 'DynamoDB', 'MySQL', 'Neo4j', 'Redis', "SQLite", "MariaDB", "Microsoft SQL Server", "Elasticsearch", "Firebase"],
-        backend: ['Ruby on Rails', 'Django', 'Serverless Cloud', 'Meteor', 'Flask', 'Sinatra', 'FastAPI', 'Supabase', 'Laravel', "Express", "Koa", "Spring", "ASP.NET", "Serverless"],
+        backend: ['Ruby on Rails', 'Django', 'Ampt', 'Meteor', 'Flask', 'Sinatra', 'FastAPI', 'Supabase', 'Laravel', "Express", "Koa", "Spring", "ASP.NET", "Serverless"],
         api: ['GraphQL', 'REST'],
         frontend: ['React', 'Svelte', 'Vue', 'Vanilla.js', "Electron", "Next.js", "Preact", 'Rescript', 'ReasonReact', "Elm", "Ink"],
         mobile: ['React Native', 'Flutter', 'Kotlin Multiplatform', 'Swift/Xcode', 'Java/Android Studio', 'PWA', "Expo"],
